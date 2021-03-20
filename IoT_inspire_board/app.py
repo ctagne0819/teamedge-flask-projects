@@ -3,20 +3,20 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('welcome.html')
+    return render_template('index.html')
 
 @app.route('/success') 
 def success():
     return ("Message has been sent. Thank you!")
 
 @app.route('/send',methods = ['POST','GET']) 
-def send(user):
+def send():
     if request.method == 'POST':
         user = request.form['msgboard'] 
         return redirect(url_for('success'))
     else:
         user = request.args.get('msgboard')
-        return redirect(url_for('success'))
+        return redirect(url_for('success', send = user))
         
 
 
