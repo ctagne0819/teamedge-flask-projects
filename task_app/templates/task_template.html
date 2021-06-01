@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="styles.css">
+        <title>Home</title>
+    </head>
+    <body>
+        <h1>Your Upcoming Tasks</h1>
+        <ul>
+            {% for task in --%}
+            <li>
+                <span>{{task["todo"]}}</span>
+                <a href="{{ '/reminder/edit/%s'%task.id' }}">Edit</a>
+                <a href="{{ '/reminder/delete/%s'%task.id' }}">Delete</a>
+                <a href="{{ '/reminder/done/%s'%task.id' }}">Done</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </body> 
+</html>

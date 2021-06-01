@@ -1,4 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request
+from sense_hat import SenseHat
+import sqlite3
 app = Flask(__name__) 
 
 @app.route('/')
@@ -14,10 +16,11 @@ def send():
     if request.method == 'POST':
         user = request.form['msgboard'] 
         return redirect(url_for('success'))
+        
     else:
         user = request.args.get('msgboard')
         return redirect(url_for('success', send = user))
-        
+         
 
 
 if __name__ == '__main__':
